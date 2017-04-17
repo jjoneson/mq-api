@@ -3,8 +3,8 @@ package structures
 import "testing"
 
 func TestFormat(t *testing.T) {
-	currency := CurrencyField(0, "123")
-	date := DateField(0, 0, "123")
+	currency := NewCurrencyField(0, "123")
+	date := NewDateField(0, "123")
 	cases := []struct {
 		got  string
 		want string

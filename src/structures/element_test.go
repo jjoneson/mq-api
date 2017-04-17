@@ -6,9 +6,9 @@ import (
 )
 
 func TestElement(t *testing.T) {
-	f := CurrencyField(0, "")
+	f := NewCurrencyField(0, "")
 	fieldElementRaw := element{nil, f.field}
-	fieldElementConstructed := Element(f.field, nil)
+	fieldElementConstructed := NewElement(f.field, nil)
 	cases := []struct {
 		got  element
 		want element
@@ -23,28 +23,28 @@ func TestElement(t *testing.T) {
 }
 
 func TestElement_ToString(t *testing.T) {
-	fieldElementWithValue := Element(CurrencyField(4, "123").field,
+	fieldElementWithValue := NewElement(NewCurrencyField(4, "123").field,
 		nil)
 
-	blockWithValue := Element(CurrencyField(3, "123").field,
+	blockWithValue := NewElement(NewCurrencyField(3, "123").field,
 		[]element{
-			Element(CurrencyField(4, "123").field,
+			NewElement(NewCurrencyField(4, "123").field,
 				nil),
-			Element(CurrencyField(4, "123").field,
+			NewElement(NewCurrencyField(4, "123").field,
 				nil),
 		})
 
-	blockWithBlockWithValue := Element(CurrencyField(3, "123").field,
+	blockWithBlockWithValue := NewElement(NewCurrencyField(3, "123").field,
 		[]element{
-			Element(CurrencyField(4, "123").field,
+			NewElement(NewCurrencyField(4, "123").field,
 				[]element{
-					Element(CurrencyField(4, "100").field,
+					NewElement(NewCurrencyField(4, "100").field,
 						nil),
-					Element(CurrencyField(4, "100").field,
+					NewElement(NewCurrencyField(4, "100").field,
 						nil),
 				}),
 
-			Element(CurrencyField(4, "123").field,
+			NewElement(NewCurrencyField(4, "123").field,
 				nil)},
 		)
 
@@ -64,41 +64,41 @@ func TestElement_ToString(t *testing.T) {
 }
 
 func TestElement_Parse(t *testing.T) {
-	got := Element(CurrencyField(4, "").field,
+	got := NewElement(NewCurrencyField(4, "").field,
 		[]element{
-			Element(CurrencyField(4, "").field,
+			NewElement(NewCurrencyField(4, "").field,
 				[]element{
-					Element(CurrencyField(4, "").field,
+					NewElement(NewCurrencyField(4, "").field,
 						nil),
-					Element(CurrencyField(4, "").field,
+					NewElement(NewCurrencyField(4, "").field,
 						[]element{
-							Element(CurrencyField(4, "3000").field,
+							NewElement(NewCurrencyField(4, "3000").field,
 								nil),
-							Element(CurrencyField(4, "4000").field,
+							NewElement(NewCurrencyField(4, "4000").field,
 								nil),
 						}),
 				}),
 
-			Element(CurrencyField(4, "").field,
+			NewElement(NewCurrencyField(4, "").field,
 				nil)},
 		)
 
-	want := Element(CurrencyField(4, "1000").field,
+	want := NewElement(NewCurrencyField(4, "1000").field,
 		[]element{
-			Element(CurrencyField(4, "2000").field,
+			NewElement(NewCurrencyField(4, "2000").field,
 				[]element{
-					Element(CurrencyField(4, "3000").field,
+					NewElement(NewCurrencyField(4, "3000").field,
 						nil),
-					Element(CurrencyField(4, "4000").field,
+					NewElement(NewCurrencyField(4, "4000").field,
 						[]element{
-							Element(CurrencyField(4, "3000").field,
+							NewElement(NewCurrencyField(4, "3000").field,
 								nil),
-							Element(CurrencyField(4, "4000").field,
+							NewElement(NewCurrencyField(4, "4000").field,
 								nil),
 						}),
 				}),
 
-			Element(CurrencyField(4, "5000").field,
+			NewElement(NewCurrencyField(4, "5000").field,
 				nil)},
 		)
 	input := "1000200030004000300040005000"

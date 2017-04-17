@@ -49,14 +49,14 @@ func newField(len int32, val string) *field {
 	return f
 }
 
-func CurrencyField(len int32, val string) *currencyField {
+func NewCurrencyField(len int32, val string) *currencyField {
 	f := &currencyField{newField(len, val)}
 	f.formatter = "$%s"
 	f.padder = "%0" + strconv.FormatInt(int64(f.len), 10) + "s"
 	return f
 }
 
-func DateField(len int32, pos int32, val string) *currencyField {
+func NewDateField(len int32, val string) *currencyField {
 	f := &currencyField{newField(len, val)}
 	f.formatter = "%s"
 	return f

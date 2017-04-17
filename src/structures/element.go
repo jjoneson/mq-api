@@ -36,7 +36,7 @@ func (el element) Equals(el2 element) bool {
 	return true
 }
 
-func Element(f *field, els []element) element {
+func NewElement(f *field, els []element) element {
 	el := element{}
 	el.field = f
 	el.elements = els
